@@ -108,20 +108,67 @@ function userMessage(message) {
 				switch(operation) {
 					case 'news':
 						// Get data from API.
+						if (companyName.toLowerCase() !== 'tech crunch') {
 						var jqxhr = $.get("https://api.swiftype.com/api/v1/public/engines/search.json?q='"+companyName+"'&page=1&per_page=5&facets%5Bpage%5D%5B%5D=author&facets%5Bpage%5D%5B%5D=category&facets%5Bpage%5D%5B%5D=tag&facets%5Bpage%5D%5B%5D=object_type&filters%5Bpage%5D%5Btimestamp%5D%5Btype%5D=range&spelling=always&engine_key=zYD5B5-eXtZN9_epXvoo", function(data) {
 							var pages = data.records.page;
-							var toDisp = "";
+							var toDisp = "Here are top 5 headlines about "+ companyName + " <br>";
 							for (var i = 0; i < pages.length; i++) {
 								toDisp += "&#8226; " + pages[i].title + " <br>";
 							}
 							console.log(data);
 							displayMessage(toDisp, watson);
 						});
-						break;
-					case 'tone':
-						// Get data from API.
+						} else {
+							var jqxhr = $.get("https://techcrunch.com/wp-json/posts/latest", function(data) {
+							var pages = data.posts;
+							var toDisp = "Here are top 5 headlines from Tech Crunch <br>";
+							for (var i = 0; i < 5; i++) {
+								toDisp += "&#8226; " + pages[i].title + " <br>";
+							}
+							console.log(data);
+							displayMessage(toDisp, watson);
+						});
+						}
 						break;
 					case 'Sentimental Analysis':
+						// Get data from API.
+						console.log('Got here');
+						var jqxhr = $.get("https://api.swiftype.com/api/v1/public/engines/search.json?q='"+ companyName + "'&page=1&per_page=5&facets%5Bpage%5D%5B%5D=author&facets%5Bpage%5D%5B%5D=category&facets%5Bpage%5D%5B%5D=tag&facets%5Bpage%5D%5B%5D=object_type&filters%5Bpage%5D%5Btimestamp%5D%5Btype%5D=range&spelling=always&engine_key=zYD5B5-eXtZN9_epXvoo", function(data) {
+							var posts = data.records.page;
+							var sentiment = '';
+							var postsContent = '';
+							for(var i=0; i<posts.length;i++){
+								postsContent = postsContent + " " + posts[i].content;
+							}
+							$.ajax({
+								//The URL to process the request
+								'url' : 'https://gateway-a.watsonplatform.net/calls/text/TextGetTextSentiment?apikey=1f746102ce0c84403da10b06350acc3edb04105f&outputMode=json&text=' +encodeURIComponent(postsContent),
+								//The type of request, also known as the "method" in HTML forms
+								//Can be 'GET' or 'POST'
+								'type' : 'POST',
+								//Any post-data/get-data parameters
+								//This is optional
+								'data' : {
+									'paramater1' : 'value',
+									'parameter2' : 'another value'
+								},
+								//The response from the server
+								'success' : function(data1) {
+									//You can use any jQuery/JavaScript here!!!
+									console.log(data1);
+									var sentiment = data1.docSentiment;
+									var speechOutput = "TechCrunch holds "+ sentiment.type + " sentiment towards " + companyName + ".";
+									if ( sentiment.score != '0.0' ) {
+										var score = ( parseFloat(sentiment.score) < 0 ) ? ( parseFloat(sentiment.score) * -1 ).toFixed(3) : parseFloat(sentiment.score).toFixed(3);
+										score = score * 100;
+										speechOutput = speechOutput + " And the sentiment strength is approximately " + score + '%';
+									}
+									displayMessage(speechOutput, watson);
+								}
+							});
+						});
+						break;
+					case 'tone':
 						// Get data from API.
 						break;
 					default: // Do nothing!	
