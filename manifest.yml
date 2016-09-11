@@ -1,9 +1,9 @@
 applications:
 - services:
   - conversation-bot
-  host: botstarter
+  host: incognitech-watson-chat
   disk: 512M
-  name: botstarter
+  name: incognitech-watson-chat
   command: node app.js
   path: .
   domain: mybluemix.net
