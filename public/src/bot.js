@@ -1,13 +1,13 @@
 /**
- * This file contains all of the web and hybrid functions for interacting with 
- * the basic chat bot dialog pane. 
+ * This file contains all of the web and hybrid functions for interacting with
+ * the basic chat bot dialog pane.
  *
  * @summary   Functions for Chat Bot.
  *
  * @since     0.0.1
  *
  */
- 
+
 "use strict";
 
 // Variables for chat and stored context specific events
@@ -25,7 +25,7 @@ var context;  // Very important. Holds all the data for the current point of the
  * When a user presses enter in the chat input window it triggers the service interactions.
  *
  * @function newEvent
- * @param {Object} e - Information about the keyboard event. 
+ * @param {Object} e - Information about the keyboard event.
  */
 function newEvent(e) {
 	// Only check for a return/enter press - Event 13
@@ -38,12 +38,12 @@ function newEvent(e) {
         // If there is any input then check if this is a claim step
 		// Some claim steps are handled in newEvent and others are handled in userMessage
 		if (text) {
-			
+
 			// Display the user's text in the chat box and null out input box
             displayMessage(text, user);
             userInput.value = '';
             userMessage(text);
-            
+            return false;
         } else {
 
             // Blank user message. Do nothing.
@@ -61,14 +61,14 @@ function newEvent(e) {
  * Primary function for parsing the conversation context  object.
  *
  * @function userMessage
- * @param {String} message - Input message from user or page load.  
+ * @param {String} message - Input message from user or page load.
  */
 function userMessage(message) {
 
     // Set parameters for payload to Watson Conversation
     params.input = {
         text: message // User defined text to be sent to service
-    }; 
+    };
 
     // Add variables to the context as more options are chosen
     if (context) {
@@ -82,7 +82,7 @@ function userMessage(message) {
     xhr.open('POST', uri, true);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.onload = function() {
-		
+
 		// Verify if there is a success code response and some text was sent
         if (xhr.status === 200 && xhr.responseText) {
 
@@ -124,7 +124,7 @@ function userMessage(message) {
 					case 'Sentimental Analysis':
 						// Get data from API.
 						break;
-					default: // Do nothing!	
+					default: // Do nothing!
 				}
 			}
 
@@ -136,7 +136,7 @@ function userMessage(message) {
     xhr.onerror = function() {
         console.error('Network error trying to send message!');
     };
-	
+
 	console.log(JSON.stringify(params));
     xhr.send(JSON.stringify(params));
 }
@@ -164,7 +164,7 @@ function userMessage(message) {
  *
  * @function displayMessage
  * @param {String} text - Text to be dispalyed in chat box.
- * @param {String} user - Denotes if the message is from Bot or the user. 
+ * @param {String} user - Denotes if the message is from Bot or the user.
  * @return null
  */
 function displayMessage(text, user) {
