@@ -189,6 +189,8 @@ nav.navbar-fixed-top .navbar-nav > li > a:not(.btn) {
 
 .navbar-brand img {
 	width: 150px;
+	height: 53px;
+  margin-top: -10px;
 }
 
 .icon-bar {
