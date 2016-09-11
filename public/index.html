@@ -21,6 +21,7 @@
 	<link rel="stylesheet" type="text/css" href="fonts/eleganticons/et-icons.css">
 	<!-- Main style -->
 	<link rel="stylesheet" type="text/css" href="css/cardio.css">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <body onload="userMessage('');">
 	<nav class="navbar">
@@ -38,7 +39,12 @@
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right main-nav">
 					<li><a href="#intro">DisruptSF</a></li>
-					<li><a href="#" data-toggle="modal" data-target="#modal1" class="btn btn-blue">About Us</a></li>
+					<li><a href="#" data-toggle="modal" data-target="#myModal">About Us</a>
+
+
+					</li>
+
+
 				</ul>
 			</div>
 			<!-- /.navbar-collapse -->
@@ -50,6 +56,57 @@
         <textarea rows="4" id="chatMessage" class="dialogInput" placeholder="Get talking" onkeypress="return newEvent(event)"></textarea>
     </div><!-- End class chatbot -->
 </div><!-- End class container -->
+
+	<div id="myModal" class="modal fade" role="dialog">
+		<div class="modal-dialog modal-lg">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+
+					<h4 class="modal-title">About Us</h4>
+				</div>
+				<div class="modal-body">
+					<div>
+						<h4>Inspiration</h4>
+
+						<p>Everyone has busy lives these days. Staying connected to the Tech world is getting harder and more time consuming each day, especially with so many growing startups and new innovations. We wanted news to be served with the least amount of physical interaction. We wanted to make tech news more accessible.</p>
+
+						<h4>What it does</h4>
+
+						<p>The two most accessible platforms (Audio and Chat) give you instantaneous results about the latest TechCrunch articles  and Sentimental Analysis about tech-based companies through Amazon Alexa and a web based chat interface.</p>
+
+						<h4>How we built it</h4>
+
+						<p>We fetched TechCrunch articles from its WordPress REST API and passed it on to Amazon Alexa to receive auditory accessibility to news. We also performed sentimental analysis provided by Alchemy API (IBM Watson) on these articles to better judge the companies current reputation/position.</p>
+
+						<h4>Challenges we ran into</h4>
+
+						<p>Accessing articles via WordPress API was tough because we had to develop into the LAMDA functions, and it is a very rigid environment to work in.
+							One other difficulty faced during the process was that the conversation API could not be customized so that it could answer chart responses from the API calls of the external data.</p>
+
+						<h4>Accomplishments that we're proud of</h4>
+
+						<p>Alchemy API from IBM Watson was a new territory to us, which created a steep learning curve. Managing to learn it within just a couple hours, was a major hit for us.
+							The biggest accomplishment for us was eliminating the process for the end user, so that they don't have to physically go on the web portal to check out TechCrunch news, neither do they need to strain their eyes.</p>
+
+						<h4>What we learned</h4>
+
+						<p>Alchemy API from IBM and the process of sentimental analysis of articles.</p>
+
+						<h4>What's next for Incognitech</h4>
+
+						<p>Improving the command sets of Alexa to a much more accessible level, as well as increasing command lines for the chatbot is our nearest next goal. To better improvise on trend/reputation analysis of companies we plan on including all categories of news articles from multiple sources. </p>
+
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
 </body>
 <!-- Scripts -->
 	<script src="js/jquery-1.11.1.min.js"></script>
