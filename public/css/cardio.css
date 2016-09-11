@@ -193,6 +193,10 @@ nav.navbar-fixed-top .navbar-nav > li > a:not(.btn) {
   margin-top: -10px;
 }
 
+.navbar-nav.main-nav {
+	margin-right: 15px;
+}
+
 .icon-bar {
 	background: #bbb;
 }
