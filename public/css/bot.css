@@ -2,31 +2,20 @@
 
 
 .dialogContainer {
-    display: flex;
-    flex-direction: column;
     font-size: 14px;
-    width: 300px;
-    height: 300px;
-    max-height: 300px;
-    margin: 0;
+    width: 600px;
+    height: 500px;
+    margin: 0 auto;
     border-radius: 4px;
     padding: 10px;
-    background-image: -moz-linear-gradient(bottom, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)), url("img/watson.png");
-    background-image: -webkit-linear-gradient(bottom, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)), url("img/watson.png");
-    background-image: -ms-linear-gradient(bottom, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)), url("img/watson.png");
-    background-image: linear-gradient(bottom, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)), url("img/watson.png");
-    background-attachment: inherit;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: 150px;
     overflow-y: auto;
     overflow-x: hidden;
     border: 1px solid rgba(86,167,161,1.0);
 }
 
 .dialogInput {
-    width: 300px;
-    margin-top: 15px;
+    width: 600px;
+    margin: 15px auto 0;
     border: 1px solid rgba(86,167,161,1.0);
     height: 60px;
     font-weight: bold;
@@ -34,6 +23,7 @@
     font-size: 13px;
     padding: 10px;
     color: #225282;
+    display: block;
 }
 
 .message {
@@ -51,10 +41,10 @@
     margin-right: 30%;
     -webkit-align-self: flex-start;
     align-self: flex-start;
-	-webkit-animation: fadein 2s; 
-       -moz-animation: fadein 2s; 
-        -ms-animation: fadein 2s; 
-         -o-animation: fadein 2s; 
+	-webkit-animation: fadein 2s;
+       -moz-animation: fadein 2s;
+        -ms-animation: fadein 2s;
+         -o-animation: fadein 2s;
             animation: fadein 2s;
 }
 
@@ -66,10 +56,10 @@
     margin-left: 30%;
     -webkit-align-self: flex-end;
     align-self: flex-end;
-	-webkit-animation: fadein 1s; 
+	-webkit-animation: fadein 1s;
        -moz-animation: fadein 1s;
-        -ms-animation: fadein 1s; 
-         -o-animation: fadein 1s; 
+        -ms-animation: fadein 1s;
+         -o-animation: fadein 1s;
             animation: fadein 1s;
 }
 
