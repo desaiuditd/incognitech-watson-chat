@@ -1,6 +1,6 @@
 applications:
 - services:
-  - conversation-bot
+  - Conversation-oo
   host: incognitech-watson-chat
   disk: 512M
   name: incognitech-watson-chat
@@ -10,6 +10,6 @@ applications:
   memory: 512M
   instances: 1
 declared-services:
-  conversation-bot:
+  Conversation-oo:
     label: conversation
     plan:  free
