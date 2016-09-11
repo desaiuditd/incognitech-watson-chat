@@ -12,12 +12,12 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     watson = require('watson-developer-cloud');
 
-/************************************************************************************************* 
-  
-  Start the server 
-  
+/*************************************************************************************************
+
+  Start the server
+
 *************************************************************************************************/
-app.use(bodyParser()); 
+app.use(bodyParser());
 
 app.use(express.static(__dirname + '/public'));
 var appEnv = cfenv.getAppEnv();
@@ -40,7 +40,7 @@ var conversation = watson.conversation({
 
 // Allow clients to interact with the bot
 app.post('/api/bot', function(req, res) {
-    
+
     console.log("Got request for Le Bot");
     console.log("Request is: ",req);
 
@@ -80,4 +80,3 @@ app.post('/api/bot', function(req, res) {
     });
 
 }); // End app.post '/api/bot'
-
